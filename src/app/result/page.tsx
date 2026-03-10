@@ -68,14 +68,10 @@ function PrescriptionContent() {
 
           <div className="border-t border-dashed border-zinc-300 py-6 space-y-4">
             <div className="flex justify-between">
-              <span>환자성함</span>
-              <span className="font-bold">건우님</span>
-            </div>
-            <div className="flex justify-between">
               <span>오늘의 날씨</span>
               <span>{mood === 'calm' ? '고요한 보라' : mood === 'energetic' ? '활기찬 노랑' : mood === 'warm' ? '몽글몽글 분홍' : '시원한 파랑'}</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between gap-4">
               <span>진단 결과</span>
               <span className="text-right">{tea.benefits}</span>
             </div>

@@ -6,14 +6,14 @@ import { ArrowLeft, Info } from 'lucide-react';
 import Link from 'next/link';
 
 const TEA_MAP_DATA = [
-  { id: 1, name: "말차", x: 80, y: 20, note: "깊은 감칠맛과 에너자이징", color: "#4f772d" },
-  { id: 2, name: "카모마일", x: 20, y: 30, note: "포근하고 화사한 꽃향기", color: "#f9dc5c" },
-  { id: 3, name: "백차", x: 10, y: 10, note: "순수하고 싱그러운 첫물", color: "#e9edc9" },
-  { id: 4, name: "철관음", x: 60, y: 80, note: "비 온 뒤 숲의 향기, 깊은 여운", color: "#2d6a4f" },
-  { id: 5, name: "보이차", x: 90, y: 90, note: "세월이 빚은 묵직한 대지의 맛", color: "#3d2b1f" },
-  { id: 6, name: "루이보스", x: 40, y: 60, note: "카페인 없는 따뜻한 위로", color: "#bc4749" },
-  { id: 7, name: "얼그레이", x: 50, y: 20, note: "세련된 베르가못의 화사함", color: "#e07a5f" },
-  { id: 8, name: "쟈스민", x: 15, y: 40, note: "우아하고 향긋한 휴식", color: "#fefae0" },
+  { id: 1, name: "녹차 (Green Tea)", x: 20, y: 15, note: "발효시키지 않아 찻잎 본연의 생기가 살아있는 맛", color: "#8ab04b" },
+  { id: 2, name: "백차 (White Tea)", x: 10, y: 10, note: "가장 적게 가공하여 맑고 섬세하며 달큰한 맛", color: "#d2d8bc" },
+  { id: 3, name: "황차 (Yellow Tea)", x: 30, y: 25, note: "민황 과정을 거쳐 떫은맛이 적고 부드러운 맛", color: "#f7d08a" },
+  { id: 4, name: "청차 (Oolong Tea)", x: 60, y: 50, note: "부분 발효를 통해 화사한 꽃향과 과일향이 입 안 가득", color: "#6cad91" },
+  { id: 5, name: "홍차 (Black Tea)", x: 80, y: 70, note: "완전 발효로 떫으면서도 풍부한 맛과 향", color: "#c15c4d" },
+  { id: 6, name: "흑차 (Dark Tea/Puerh)", x: 90, y: 90, note: "미생물에 의한 후발효로 깊고 묵직한 대지의 맛", color: "#4d3a2b" },
+  { id: 7, name: "카모마일", x: 15, y: 40, note: "포근하고 화사한 꽃향기 (허브차)", color: "#f9dc5c" },
+  { id: 8, name: "루이보스", x: 40, y: 80, note: "카페인 없는 따뜻한 위로 (허브차)", color: "#bc4749" },
 ];
 
 export default function FlavorMapPage() {
