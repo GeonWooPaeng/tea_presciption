@@ -184,13 +184,23 @@ function PrescriptionContent() {
             </div>
           </div>
 
-          <div className="border-t border-zinc-300 pt-8 mt-4 text-center">
+          <div className="border-t border-zinc-300 pt-8 mt-4 text-center relative">
             <div className="p-4 border border-zinc-200 rounded-lg mb-6 group hover:border-zinc-400 transition-colors" style={{ backgroundColor: '#fff' }}>
               <span className="block text-[9px] uppercase tracking-[0.3em] mb-2 opacity-50">Master Validation Code</span>
               <div className="w-full h-10 bg-repeat-x opacity-90" style={{ backgroundImage: 'linear-gradient(90deg, #000 2px, transparent 2px)', backgroundSize: '6px 100%' }} />
               <span className="text-[9px] font-bold tracking-[0.5em] mt-2 block">TEA-RECIPE-7729-ALPHA</span>
             </div>
-            <p className="text-[9px] opacity-40 leading-relaxed font-bold uppercase tracking-tighter">Certified by Digital Tea Room Academy<br/>Mind-Calming Solution v1.2</p>
+            
+            <div className="flex justify-between items-center px-2">
+              <p className="text-[9px] opacity-40 leading-relaxed font-bold uppercase tracking-tighter text-left">Certified by Digital Tea Room Academy<br/>Mind-Calming Solution v1.2</p>
+              
+              <div className="flex flex-col items-center">
+                <span className="text-[8px] uppercase opacity-40 mb-1">Issuer</span>
+                <div className="w-12 h-12 border-2 border-accent-olive rounded-full flex items-center justify-center rotate-12 bg-white/50" style={{ borderColor: 'var(--accent-olive)' }}>
+                  <span className="text-[10px] font-black text-accent-olive leading-tight" style={{ color: 'var(--accent-olive)' }}>팽주팽<br/>(印)</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Jagged Edge Bottom */}
