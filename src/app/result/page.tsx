@@ -136,50 +136,65 @@ function PrescriptionContent() {
         transition={{ duration: 0.8 }}
         className="w-full max-w-sm mb-12"
       >
-        {/* Receipt UI */}
-        <div className="bg-white text-zinc-900 p-8 shadow-2xl relative overflow-hidden font-mono text-sm leading-relaxed" style={{ minHeight: '500px', display: 'flex', flexDirection: 'column' }}>
+        {/* Receipt UI - Enhanced Premium Look */}
+        <div className="bg-[#f9f8f4] text-zinc-900 p-8 shadow-2xl relative overflow-hidden font-mono text-sm leading-relaxed" 
+             style={{ 
+               minHeight: '520px', 
+               display: 'flex', 
+               flexDirection: 'column',
+               backgroundImage: 'radial-gradient(#d1d1d1 0.5px, transparent 0.5px)',
+               backgroundSize: '20px 20px',
+               border: '1px solid rgba(0,0,0,0.05)'
+             }}>
           {/* Jagged Edge Top */}
-          <div className="absolute top-0 left-0 w-full h-2 bg-[#1a1c18] jagged-border" />
+          <div className="absolute top-0 left-0 w-full h-3 bg-[#1a1c18] jagged-border" />
           
-          <div className="text-center mb-8 pt-4">
-            <h1 className="text-xl font-bold mb-1 serif" style={{ color: '#1a1c18' }}>다(茶)방전 처방전</h1>
-            <p className="text-xs opacity-60">Digital Tea Room No. 2026-03-10</p>
+          {/* Aesthetic Overlay */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/paper.png")' }} />
+
+          <div className="text-center mb-10 pt-6">
+            <div className="inline-block border-2 border-zinc-900 px-4 py-1 mb-4">
+              <h1 className="text-xl font-black serif tracking-[0.2em] uppercase" style={{ color: '#1a1c18' }}>Tea Prescription</h1>
+            </div>
+            <p className="text-[10px] tracking-widest opacity-60 uppercase font-bold">Digital Tea Room | No. {new Date().toISOString().slice(0,10)}</p>
           </div>
 
-          <div className="border-t border-dashed border-zinc-300 py-6" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div className="flex justify-between">
-              <span style={{ color: '#666' }}>오늘의 마음 날씨</span>
-              <span style={{ fontWeight: 700 }}>{mood === 'calm' ? '고요한 보라' : mood === 'energetic' ? '활기찬 노랑' : mood === 'warm' ? '몽글몽글 분홍' : '시원한 파랑'}</span>
+          <div className="border-t-2 border-zinc-900 py-8 mb-4 border-double" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div className="flex justify-between items-end border-b border-zinc-200 pb-2">
+              <span className="text-[10px] uppercase font-bold tracking-tighter" style={{ color: '#888' }}>Patient Mood</span>
+              <span style={{ fontWeight: 800, fontSize: '1rem' }}>{mood === 'calm' ? '고요한 보라 (Calm Purple)' : mood === 'energetic' ? '활기찬 노랑 (Energetic Yellow)' : mood === 'warm' ? '몽글몽글 분홍 (Warm Pink)' : '시원한 파랑 (Refreshing Blue)'}</span>
             </div>
-            <div className="flex justify-between gap-4">
-              <span style={{ color: '#666' }}>진단 결과</span>
-              <span className="text-right" style={{ fontWeight: 700 }}>{tea.benefits}</span>
+            <div className="flex justify-between items-start gap-4">
+              <span className="text-[10px] uppercase font-bold" style={{ color: '#888', marginTop: '4px' }}>Diagnosis</span>
+              <span className="text-right leading-snug" style={{ fontWeight: 700, flex: 1 }}>{tea.benefits}</span>
             </div>
           </div>
 
-          <div className="border-t border-dashed border-zinc-300 py-6" style={{ flex: 1 }}>
-            <div className="mb-4">
-              <span className="block text-xs uppercase opacity-60 mb-1">처방 제품</span>
-              <span className="text-lg font-bold text-accent-olive serif" style={{ color: '#8fb865', fontSize: '1.25rem' }}>{tea.name}</span>
+          <div className="border-t border-dashed border-zinc-400 py-8" style={{ flex: 1 }}>
+            <div className="mb-6">
+              <span className="block text-[10px] uppercase font-bold tracking-widest opacity-60 mb-2">Prescribed Item</span>
+              <span className="text-2xl font-black text-accent-olive serif italic underline decoration-zinc-200 underline-offset-8" style={{ color: '#5b8235' }}>{tea.name}</span>
             </div>
             <div>
-              <span className="block text-xs uppercase opacity-60 mb-1">복용 요법</span>
-              <p className="text-xs" style={{ color: '#333' }}>{tea.brewing}</p>
-              <p className="text-[10px] mt-2 italic opacity-80" style={{ color: '#777', marginTop: '10px' }}>* {tea.message}</p>
+              <span className="block text-[10px] uppercase font-bold tracking-widest opacity-60 mb-2">Dosage & Usage</span>
+              <p className="text-xs leading-relaxed font-bold" style={{ color: '#444' }}>{tea.brewing}</p>
+              <div className="mt-4 p-3 bg-zinc-100/50 rounded italic text-[11px] border-l-2 border-zinc-300" style={{ color: '#555' }}>
+                " {tea.message} "
+              </div>
             </div>
           </div>
 
-          <div className="border-t border-dashed border-zinc-300 pt-6 text-center">
-            <div className="bg-zinc-100 p-4 rounded mb-4" style={{ backgroundColor: '#f4f4f4', padding: '1rem', borderRadius: '8px' }}>
-              <span className="block text-[10px] uppercase mb-1">Barcode</span>
-              <div className="w-full h-8 bg-zinc-900 mb-1" style={{ backgroundColor: '#1a1c18', height: '30px', margin: '5px 0' }} />
-              <span className="text-[10px]">TEA-RECIPE-MASTER-CODE</span>
+          <div className="border-t border-zinc-300 pt-8 mt-4 text-center">
+            <div className="p-4 border border-zinc-200 rounded-lg mb-6 group hover:border-zinc-400 transition-colors" style={{ backgroundColor: '#fff' }}>
+              <span className="block text-[9px] uppercase tracking-[0.3em] mb-2 opacity-50">Master Validation Code</span>
+              <div className="w-full h-10 bg-repeat-x opacity-90" style={{ backgroundImage: 'linear-gradient(90deg, #000 2px, transparent 2px)', backgroundSize: '6px 100%' }} />
+              <span className="text-[9px] font-bold tracking-[0.5em] mt-2 block">TEA-RECIPE-7729-ALPHA</span>
             </div>
-            <p className="text-[10px] opacity-40">본 처방전은 마음의 안정을 위한 가이드입니다.</p>
+            <p className="text-[9px] opacity-40 leading-relaxed font-bold uppercase tracking-tighter">Certified by Digital Tea Room Academy<br/>Mind-Calming Solution v1.2</p>
           </div>
 
           {/* Jagged Edge Bottom */}
-          <div className="absolute bottom-0 left-0 w-full h-2 bg-[#1a1c18] jagged-border" style={{ transform: 'rotate(180deg)' }} />
+          <div className="absolute bottom-0 left-0 w-full h-3 bg-[#1a1c18] jagged-border" style={{ transform: 'rotate(180deg)' }} />
         </div>
       </motion.div>
 

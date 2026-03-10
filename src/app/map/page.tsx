@@ -56,19 +56,19 @@ function MapContent() {
 
       <div className="flex-1 relative glass-card p-12 overflow-hidden flex items-center justify-center" style={{ flex: 1, position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '3rem', backgroundColor: 'rgba(255, 255, 255, 0.05)', borderRadius: '1.5rem', border: '1px solid rgba(255, 255, 255, 0.1)', minHeight: 'calc(100vh - 250px)', margin: '0 0 2rem 0' }}>
         {/* Galaxy Axis Labels - Adjusted for better visibility and spacing */}
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 text-[12px] tracking-[0.2em] opacity-90 uppercase font-bold" style={{ position: 'absolute', top: '2rem', left: '50%', transform: 'translateX(-50%)', fontSize: '12px', letterSpacing: '0.2em', opacity: 0.9, textTransform: 'uppercase', color: '#fff', zIndex: 10 }}>단향 (Sweet Aroma)</div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[12px] tracking-[0.2em] opacity-90 uppercase font-bold" style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', fontSize: '12px', letterSpacing: '0.2em', opacity: 0.9, textTransform: 'uppercase', color: '#fff', zIndex: 10 }}>덜 단향 (Fresh/Clean)</div>
-        <div className="absolute left-8 top-1/2 -rotate-90 origin-center text-[12px] tracking-[0.2em] opacity-90 uppercase font-bold" style={{ position: 'absolute', left: '2rem', top: '50%', transform: 'translateY(-50%) rotate(-90deg)', transformOrigin: 'center', fontSize: '12px', letterSpacing: '0.2em', opacity: 0.9, textTransform: 'uppercase', color: '#fff', zIndex: 10 }}>덜 단맛 (Subtle Sweet)</div>
-        <div className="absolute right-8 top-1/2 rotate-90 origin-center text-[12px] tracking-[0.2em] opacity-90 uppercase font-bold" style={{ position: 'absolute', right: '2rem', top: '50%', transform: 'translateY(-50%) rotate(90deg)', transformOrigin: 'center', fontSize: '12px', letterSpacing: '0.2em', opacity: 0.9, textTransform: 'uppercase', color: '#fff', zIndex: 10 }}>단맛 (Rich Sweet)</div>
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 text-[12px] tracking-[0.2em] opacity-90 uppercase font-bold pointer-events-none" style={{ position: 'absolute', top: '2rem', left: '50%', transform: 'translateX(-50%)', fontSize: '12px', letterSpacing: '0.2em', opacity: 0.9, textTransform: 'uppercase', color: '#fff', zIndex: 5 }}>단향 (Sweet Aroma)</div>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[12px] tracking-[0.2em] opacity-90 uppercase font-bold pointer-events-none" style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', fontSize: '12px', letterSpacing: '0.2em', opacity: 0.9, textTransform: 'uppercase', color: '#fff', zIndex: 5 }}>덜 단향 (Fresh/Clean)</div>
+        <div className="absolute left-8 top-1/2 -rotate-90 origin-center text-[12px] tracking-[0.2em] opacity-90 uppercase font-bold pointer-events-none" style={{ position: 'absolute', left: '2rem', top: '50%', transform: 'translateY(-50%) rotate(-90deg)', transformOrigin: 'center', fontSize: '12px', letterSpacing: '0.2em', opacity: 0.9, textTransform: 'uppercase', color: '#fff', zIndex: 5 }}>덜 단맛 (Subtle Sweet)</div>
+        <div className="absolute right-8 top-1/2 rotate-90 origin-center text-[12px] tracking-[0.2em] opacity-90 uppercase font-bold pointer-events-none" style={{ position: 'absolute', right: '2rem', top: '50%', transform: 'translateY(-50%) rotate(90deg)', transformOrigin: 'center', fontSize: '12px', letterSpacing: '0.2em', opacity: 0.9, textTransform: 'uppercase', color: '#fff', zIndex: 5 }}>단맛 (Rich Sweet)</div>
 
         {/* Center Grid Lines */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.2, pointerEvents: 'none' }}>
+        <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.2, pointerEvents: 'none', zIndex: 1 }}>
           <div className="w-[90%] h-px bg-white/20" style={{ width: '90%', height: '1px', backgroundColor: 'rgba(255,255,255,0.2)' }} />
           <div className="h-[90%] w-px bg-white/20 absolute" style={{ height: '90%', width: '1px', backgroundColor: 'rgba(255,255,255,0.2)', position: 'absolute' }} />
         </div>
 
-        {/* Tea Stars Container - Ensuring it fills the glass-card */}
-        <div className="relative w-full h-full max-w-5xl aspect-square md:aspect-video flex items-center justify-center" style={{ width: '100%', height: '100%', position: 'relative' }}>
+        {/* Tea Stars Container - Ensuring it is above grid but accessible */}
+        <div className="relative w-full h-full max-w-5xl aspect-square md:aspect-video flex items-center justify-center" style={{ width: '100%', height: '100%', position: 'relative', zIndex: 10 }}>
           {displayTeas.map((tea) => (
             <motion.div
               key={tea.id}
