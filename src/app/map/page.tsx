@@ -7,14 +7,14 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
 const TEA_MAP_DATA = [
-  { id: 1, name: "녹차 (Green Tea)", x: 20, y: 85, note: "맑고 깨끗한 향, 은은하고 산뜻한 단맛", color: "#8ab04b" }, // 덜 단향 (최하단)
+  { id: 1, name: "녹차 (Green Tea)", x: 25, y: 75, note: "맑고 깨끗한 향, 은은하고 산뜻한 단맛", color: "#8ab04b" }, // Fresh (Bottom-ish)
   { id: 2, name: "백차 (White Tea)", x: 35, y: 60, note: "솜털같이 가볍고 섬세한 달큰함", color: "#d2d8bc" },
-  { id: 3, name: "황차 (Yellow Tea)", x: 45, y: 55, note: "떫은맛을 덜어내어 더욱 부드러운 단맛", color: "#f7d08a" },
-  { id: 4, name: "청차 (Oolong Tea)", x: 75, y: 10, note: "화사한 과일과 꽃의 달콤한 향이 일품", color: "#6cad91" }, // 강한 단향 (최상단)
-  { id: 5, name: "홍차 (Black Tea)", x: 90, y: 20, note: "깊고 진한 풍미 속에 감춰진 꿀 같은 달콤함", color: "#c15c4d" }, // 강한 단향 (상단)
-  { id: 6, name: "흑차 (Puerh Tea)", x: 30, y: 90, note: "묵직한 대지의 맛, 숙성된 깊은 단맛", color: "#4d3a2b" }, // 덜 단향 (최하단)
-  { id: 7, name: "카모마일 (Chamomile)", x: 80, y: 5, note: "사과처럼 향긋하고 달콤한 꽃향기", color: "#f9dc5c" }, // 매우 강한 단향 (최상단)
-  { id: 8, name: "루이보스 (Rooibos)", x: 65, y: 70, note: "자극 없이 편안하게 스며드는 은은한 단맛", color: "#bc4749" },
+  { id: 3, name: "황차 (Yellow Tea)", x: 45, y: 45, note: "떫은맛을 덜어내어 더욱 부드러운 단맛", color: "#f7d08a" },
+  { id: 4, name: "청차 (Oolong Tea)", x: 70, y: 25, note: "화사한 과일과 꽃의 달콤한 향이 일품", color: "#6cad91" }, // Sweet (Top-ish)
+  { id: 5, name: "홍차 (Black Tea)", x: 85, y: 20, note: "깊고 진한 풍미 속에 감춰진 꿀 같은 달콤함", color: "#c15c4d" }, // Sweet (Top)
+  { id: 6, name: "흑차 (Puerh Tea)", x: 20, y: 85, note: "묵직한 대지의 맛, 숙성된 깊은 단맛", color: "#4d3a2b" }, // Fresh (Bottom)
+  { id: 7, name: "카모마일 (Chamomile)", x: 80, y: 10, note: "사과처럼 향긋하고 달콤한 꽃향기", color: "#f9dc5c" }, // Very Sweet (Top)
+  { id: 8, name: "루이보스 (Rooibos)", x: 60, y: 55, note: "자극 없이 편안하게 스며드는 은은한 단맛", color: "#bc4749" },
 ];
 
 function MapContent() {
@@ -24,13 +24,12 @@ function MapContent() {
   const mood = searchParams.get('mood');
   const need = searchParams.get('need');
 
-  // Filter to only show the prescribed tea if provided (robust matching)
-  const displayTeas = prescribedTeaName 
-    ? TEA_MAP_DATA.filter(t => 
-        t.name.toLowerCase().includes(prescribedTeaName.toLowerCase()) || 
-        prescribedTeaName.toLowerCase().includes(t.name.split(' (')[0].toLowerCase())
-      )
-    : TEA_MAP_DATA;
+  // Robust matching logic
+  const prescribedTea = TEA_MAP_DATA.find(t => {
+    const pName = (prescribedTeaName || '').toLowerCase().trim();
+    const mapName = t.name.toLowerCase().trim();
+    return mapName.includes(pName) || pName.includes(mapName.split(' (')[0]);
+  });
 
   return (
     <div className="flex flex-col w-full h-full">
@@ -70,43 +69,68 @@ function MapContent() {
 
         {/* Tea Stars Container - Explicit Coordinate Space */}
         <div className="relative w-full h-full max-w-5xl aspect-square md:aspect-video" style={{ width: '100%', height: '100%', position: 'relative', zIndex: 10 }}>
-          {displayTeas.map((tea) => (
-            <motion.div
-              key={tea.id}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              style={{ 
-                left: `${tea.x}%`, 
-                top: `${tea.y}%`,
-                position: 'absolute',
-                x: '-50%',
-                y: '-50%'
-              }}
-              onHoverStart={() => setHoveredTea(tea)}
-              onHoverEnd={() => setHoveredTea(null)}
-              className="relative cursor-pointer group"
-            >
+          {TEA_MAP_DATA.map((tea, index) => {
+            const isPrescribed = prescribedTea?.id === tea.id;
+            const hasFilter = !!prescribedTea;
+            
+            return (
               <motion.div
+                key={tea.id}
+                initial={{ opacity: 0, scale: 0, left: '50%', top: '50%' }}
                 animate={{ 
-                  boxShadow: hoveredTea?.id === tea.id 
-                    ? `0 0 40px 15px ${tea.color}` 
-                    : `0 0 25px 8px ${tea.color}60`,
-                  scale: hoveredTea?.id === tea.id ? 2.5 : 1.8
+                  opacity: hasFilter ? (isPrescribed ? 1 : 0.2) : 1, 
+                  scale: hasFilter ? (isPrescribed ? 1.5 : 0.7) : 1,
+                  left: `${tea.x}%`, 
+                  top: `${tea.y}%`,
+                  zIndex: isPrescribed ? 50 : 10
                 }}
-                className="w-4 h-4 rounded-full"
-                style={{ backgroundColor: tea.color }}
-              />
-              <span className="absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-[13px] font-black transition-opacity" style={{ color: tea.color, textShadow: '0 0 15px rgba(0,0,0,1)' }}>
-                {tea.name}
-              </span>
+                transition={{ 
+                  delay: index * 0.05,
+                  duration: 1.2,
+                  ease: [0.34, 1.56, 0.64, 1], // bouncy elastic feel
+                  opacity: { duration: 0.8 },
+                  scale: { duration: 0.8 }
+                }}
+                style={{ 
+                  position: 'absolute',
+                  translateX: '-50%',
+                  translateY: '-50%'
+                }}
+                onHoverStart={() => setHoveredTea(tea)}
+                onHoverEnd={() => setHoveredTea(null)}
+                className="relative cursor-pointer group"
+              >
+                <motion.div
+                  animate={{ 
+                    boxShadow: hoveredTea?.id === tea.id 
+                      ? `0 0 50px 20px ${tea.color}` 
+                      : `0 0 20px 5px ${tea.color}40`,
+                    scale: hoveredTea?.id === tea.id ? 2.2 : 1
+                  }}
+                  className="w-4 h-4 rounded-full"
+                  style={{ backgroundColor: tea.color }}
+                />
+                <motion.span 
+                  animate={{
+                    opacity: hasFilter && !isPrescribed ? 0.3 : 1,
+                    scale: isPrescribed ? 1.2 : 1
+                  }}
+                  className="absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-[13px] font-bold" 
+                  style={{ 
+                    color: tea.color, 
+                    textShadow: '0 0 10px rgba(0,0,0,0.8)',
+                  }}
+                >
+                  {tea.name}
+                </motion.span>
 
-              {/* Ink Spread Effect on Hover */}
-              {hoveredTea?.id === tea.id && (
-                <div className="ink-drop" style={{ left: '50%', top: '50%', backgroundColor: tea.color, opacity: 0.4 }} />
-              )}
-            </motion.div>
-          ))}
+                {/* Ink Spread Effect on Hover */}
+                {hoveredTea?.id === tea.id && (
+                  <div className="ink-drop" style={{ left: '50%', top: '50%', backgroundColor: tea.color, opacity: 0.3 }} />
+                )}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Hover Information Display */}
