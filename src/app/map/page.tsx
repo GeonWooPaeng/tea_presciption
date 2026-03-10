@@ -12,9 +12,9 @@ const TEA_MAP_DATA = [
   { id: 3, name: "황차 (Yellow Tea)", x: 50, y: 55, note: "떫은맛을 덜어내어 더욱 부드러운 단맛", color: "#f7d08a" },
   { id: 4, name: "청차 (Oolong Tea)", x: 70, y: 35, note: "화사한 과일과 꽃의 달콤한 향이 일품", color: "#6cad91" },
   { id: 5, name: "홍차 (Black Tea)", x: 85, y: 20, note: "깊고 진한 풍미 속에 감춰진 꿀 같은 달콤함", color: "#c15c4d" },
-  { id: 6, name: "흑차 (Dark Tea/Puerh)", x: 45, y: 85, note: "묵직한 대지의 맛, 숙성된 깊은 단맛", color: "#4d3a2b" },
-  { id: 7, name: "카모마일", x: 80, y: 15, note: "사과처럼 향긋하고 달콤한 꽃향기", color: "#f9dc5c" },
-  { id: 8, name: "루이보스", x: 75, y: 65, note: "자극 없이 편안하게 스며드는 은은한 단맛", color: "#bc4749" },
+  { id: 6, name: "흑차 (Puerh Tea)", x: 45, y: 85, note: "묵직한 대지의 맛, 숙성된 깊은 단맛", color: "#4d3a2b" },
+  { id: 7, name: "카모마일 (Chamomile)", x: 80, y: 15, note: "사과처럼 향긋하고 달콤한 꽃향기", color: "#f9dc5c" },
+  { id: 8, name: "루이보스 (Rooibos)", x: 75, y: 65, note: "자극 없이 편안하게 스며드는 은은한 단맛", color: "#bc4749" },
 ];
 
 function MapContent() {

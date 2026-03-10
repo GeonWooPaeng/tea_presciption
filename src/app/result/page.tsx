@@ -8,29 +8,12 @@ import { Suspense } from 'react';
 
 // Mock Tea Data based on survey answers + 6 Great Tea Types
 const TEA_RECOMMENDATIONS: Record<string, any> = {
+  // Energetic
   'energetic-focus': {
     name: "녹차 (Green Tea)",
     benefits: "정신 맑음, 집중력 향상, 항산화",
     brewing: "따뜻한 물 150ml (70도), 2분간 우림",
     message: "찻잎 본연의 생기가 당신의 감각을 깨워줄 거예요."
-  },
-  'refreshing-empty': {
-    name: "백차 (White Tea)",
-    benefits: "노폐물 배출, 상쾌한 기분, 스트레스 해소",
-    brewing: "따뜻한 물 200ml, 3분간 우림",
-    message: "비 온 뒤 숲의 향기처럼, 무거운 마음을 씻어내 드릴게요."
-  },
-  'calm-comfort': {
-    name: "황차 (Yellow Tea)",
-    benefits: "심신 안정, 부드러운 위로",
-    brewing: "따뜻한 물 200ml, 2분간 우림",
-    message: "오랜 시간 공들여 빚은 부드러움이 당신을 감싸 안을 거예요."
-  },
-  'warm-warmth': {
-    name: "청차 (Oolong Tea)",
-    benefits: "심신 안정, 소화 도움, 체온 상승",
-    brewing: "끓는 물 200ml, 1분 30초간 우림",
-    message: "화사한 꽃향이 당신의 마음을 따뜻하게 녹여줄 시간입니다."
   },
   'energetic-warmth': {
     name: "홍차 (Black Tea)",
@@ -38,14 +21,99 @@ const TEA_RECOMMENDATIONS: Record<string, any> = {
     brewing: "끓는 물 200ml, 3분간 우림",
     message: "붉은 수색처럼 당신의 하루에 열정을 채워 드릴게요."
   },
+  'energetic-empty': {
+    name: "청차 (Oolong Tea)",
+    benefits: "화사한 전환, 대사 활발",
+    brewing: "끓는 물 200ml, 1분 30초간 우림",
+    message: "다채로운 향기가 복잡한 머릿속을 상쾌하게 비워줄 거예요."
+  },
+  'energetic-comfort': {
+    name: "카모마일 (Chamomile)",
+    benefits: "긴장 완화, 부드러운 에너지",
+    brewing: "끓는 물 200ml, 4분간 우림",
+    message: "지친 마음을 달콤한 사과향으로 포근하게 감싸 드릴게요."
+  },
+  
+  // Calm
+  'calm-comfort': {
+    name: "황차 (Yellow Tea)",
+    benefits: "심신 안정, 부드러운 위로",
+    brewing: "따뜻한 물 200ml, 2분간 우림",
+    message: "오랜 시간 공들여 빚은 부드러움이 당신을 감싸 안을 거예요."
+  },
   'calm-empty': {
     name: "흑차 (Puerh Tea)",
     benefits: "깊은 안정, 정화 작용",
     brewing: "끓는 물 200ml, 1분간 우림 (첫 물은 버리세요)",
     message: "세월이 빚은 묵직한 무게감이 당신의 잡념을 눌러줄 거예요."
   },
+  'calm-focus': {
+    name: "녹차 (Green Tea)",
+    benefits: "조용한 집중, 평온한 정신",
+    brewing: "따뜻한 물 150ml (70도), 2분간 우림",
+    message: "고요한 숲속의 공기처럼 당신의 집중을 도와줄 거예요."
+  },
+  'calm-warmth': {
+    name: "루이보스 (Rooibos)",
+    benefits: "무카페인 안정, 온기 유지",
+    brewing: "따뜻한 물 200ml, 4분간 우림",
+    message: "붉은 흙의 대지처럼 당신의 마음을 따뜻하게 지탱해 드릴게요."
+  },
+
+  // Refreshing
+  'refreshing-empty': {
+    name: "백차 (White Tea)",
+    benefits: "노폐물 배출, 상쾌한 기분, 스트레스 해소",
+    brewing: "따뜻한 물 200ml, 3분간 우림",
+    message: "비 온 뒤 숲의 향기처럼, 무거운 마음을 씻어내 드릴게요."
+  },
+  'refreshing-focus': {
+    name: "녹차 (Green Tea)",
+    benefits: "상쾌한 환기, 맑은 정신",
+    brewing: "따뜻한 물 150ml (70도), 2분간 우림",
+    message: "이슬 맺힌 찻잎의 청량함이 당신을 깨워줄 거예요."
+  },
+  'refreshing-comfort': {
+    name: "카모마일 (Chamomile)",
+    benefits: "편안한 휴식, 심신의 정화",
+    brewing: "끓는 물 200ml, 4분간 우림",
+    message: "맑은 하늘 같은 향기가 당신의 긴장을 풀어 드릴게요."
+  },
+  'refreshing-warmth': {
+    name: "백차 (White Tea)",
+    benefits: "은은한 온기, 청량한 위로",
+    brewing: "따뜻한 물 200ml, 3분간 우림",
+    message: "하얀 솜털의 부드러움이 당신의 마음을 따뜻하게 적셔줄 거예요."
+  },
+
+  // Warm
+  'warm-warmth': {
+    name: "청차 (Oolong Tea)",
+    benefits: "심신 안정, 소화 도움, 체온 상승",
+    brewing: "끓는 물 200ml, 1분 30초간 우림",
+    message: "화사한 꽃향이 당신의 마음을 따뜻하게 녹여줄 시간입니다."
+  },
+  'warm-comfort': {
+    name: "황차 (Yellow Tea)",
+    benefits: "부드러운 포용, 따뜻한 위로",
+    brewing: "따뜻한 물 200ml, 2분간 우림",
+    message: "햇살을 품은 찻잎이 당신의 고단함을 어루만져 드릴게요."
+  },
+  'warm-focus': {
+    name: "홍차 (Black Tea)",
+    benefits: "따뜻한 활력, 집중력 유지",
+    brewing: "끓는 물 200ml, 3분간 우림",
+    message: "단단한 온기가 당신의 명료한 판단을 도와줄 거예요."
+  },
+  'warm-empty': {
+    name: "루이보스 (Rooibos)",
+    benefits: "편안한 비움, 순수한 온기",
+    brewing: "따뜻한 물 200ml, 4분간 우림",
+    message: "군더더기 없는 자연의 맛이 당신의 마음을 깨끗하게 채워줄 거예요."
+  },
+
   'default': {
-    name: "루이보스 클래식",
+    name: "루이보스 (Rooibos)",
     benefits: "무카페인, 노화 방지, 심신 위로",
     brewing: "따뜻한 물 200ml, 4분간 우림",
     message: "언제 어디서나 당신을 지켜주는 가장 편안한 차입니다."
