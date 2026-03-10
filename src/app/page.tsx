@@ -1,65 +1,134 @@
-import Image from "next/image";
+'use client';
+
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="tea-gradient-bg flex flex-col items-center justify-center min-h-screen px-6 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="max-w-2xl"
+      >
+        <motion.span 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="text-accent-olive tracking-widest uppercase text-sm mb-4 block"
+        >
+          Digital Tea Room
+        </motion.span>
+        
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 serif tracking-tight">
+          마음을 달이는 시간, <br />
+          <span className="text-accent-olive">다(茶)방전</span>
+        </h1>
+        
+        <p className="text-text-secondary text-lg mb-10 leading-relaxed font-light">
+          복잡한 생각은 잠시 내려놓고, <br />
+          지금 당신에게 꼭 필요한 온기 한 잔을 찾아보세요.
+        </p>
+
+        <div className="flex flex-col items-center gap-4">
+          <Link href="/survey">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="button-premium px-12 py-4"
+            >
+              다실 입장하기
+            </motion.button>
+          </Link>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            transition={{ delay: 1.5, duration: 1 }}
+            className="text-xs text-text-secondary mt-4 font-light italic"
+          >
+            차(tea) 마스터가 당신의 마음 날씨를 기다리고 있습니다.
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Subtle Background Elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-accent-olive rounded-full blur-[120px]"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        <motion.div
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.05, 0.15, 0.05],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-accent-gold rounded-full blur-[120px]"
+        />
+      </div>
+
+      <style jsx>{`
+        main {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          text-align: center;
+          padding: 0 24px;
+        }
+        .max-w-2xl { max-width: 42rem; }
+        .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+        .md\:text-6xl { @media (min-width: 768px) { font-size: 3.75rem; line-height: 1; } }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-10 { margin-bottom: 2.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .text-sm { font-size: 0.875rem; }
+        .text-xs { font-size: 0.75rem; }
+        .font-bold { font-weight: 700; }
+        .font-light { font-weight: 300; }
+        .leading-relaxed { line-height: 1.625; }
+        .tracking-widest { letter-spacing: 0.1em; }
+        .tracking-tight { letter-spacing: -0.025em; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-4 { gap: 1rem; }
+        .block { display: block; }
+        .fixed { position: fixed; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+        .pointer-events-none { pointer-events: none; }
+        .overflow-hidden { overflow: hidden; }
+        .-z-10 { z-index: -10; }
+        .absolute { position: absolute; }
+        .-top-1\/4 { top: -25%; }
+        .-right-1\/4 { right: -25%; }
+        .-bottom-1\/4 { bottom: -25%; }
+        .-left-1\/4 { left: -25%; }
+        .w-1\/2 { width: 50%; }
+        .h-1\/2 { height: 50%; }
+        .bg-accent-olive { background-color: var(--accent-olive); }
+        .bg-accent-gold { background-color: var(--accent-gold); }
+        .rounded-full { border-radius: 9999px; }
+        .blur-\[120px\] { filter: blur(120px); }
+      `}</style>
+    </main>
   );
 }

@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #1a1c18;
+  --bg-secondary: #242621;
+  --text-primary: #e2e3db;
+  --text-secondary: #c6c8bc;
+  --accent-olive: #98d697;
+  --accent-earth: #8a9382;
+  --accent-gold: #d4af37;
+  
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  --font-serif: 'Noto Serif KR', serif;
+  --font-sans: 'Outfit', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, .serif {
+  font-family: var(--font-serif);
+}
+
+.tea-gradient-bg {
+  background: radial-gradient(circle at center, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  min-height: 100vh;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+}
+
+.button-premium {
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: 1px solid var(--accent-olive);
+  background: transparent;
+  color: var(--accent-olive);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-sans);
+  overflow: hidden;
+  position: relative;
+}
+
+.button-premium:hover {
+  background: var(--accent-olive);
+  color: var(--bg-primary);
+}
+
+@keyframes ink-spread {
+  0% { transform: scale(0); opacity: 0.8; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+.ink-drop {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--accent-olive);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: ink-spread 1s ease-out forwards;
 }
