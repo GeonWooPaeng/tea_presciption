@@ -6,14 +6,14 @@ import { ArrowLeft, Info } from 'lucide-react';
 import Link from 'next/link';
 
 const TEA_MAP_DATA = [
-  { id: 1, name: "녹차 (Green Tea)", x: 20, y: 15, note: "발효시키지 않아 찻잎 본연의 생기가 살아있는 맛", color: "#8ab04b" },
-  { id: 2, name: "백차 (White Tea)", x: 10, y: 10, note: "가장 적게 가공하여 맑고 섬세하며 달큰한 맛", color: "#d2d8bc" },
-  { id: 3, name: "황차 (Yellow Tea)", x: 30, y: 25, note: "민황 과정을 거쳐 떫은맛이 적고 부드러운 맛", color: "#f7d08a" },
-  { id: 4, name: "청차 (Oolong Tea)", x: 60, y: 50, note: "부분 발효를 통해 화사한 꽃향과 과일향이 입 안 가득", color: "#6cad91" },
-  { id: 5, name: "홍차 (Black Tea)", x: 80, y: 70, note: "완전 발효로 떫으면서도 풍부한 맛과 향", color: "#c15c4d" },
-  { id: 6, name: "흑차 (Dark Tea/Puerh)", x: 90, y: 90, note: "미생물에 의한 후발효로 깊고 묵직한 대지의 맛", color: "#4d3a2b" },
-  { id: 7, name: "카모마일", x: 15, y: 40, note: "포근하고 화사한 꽃향기 (허브차)", color: "#f9dc5c" },
-  { id: 8, name: "루이보스", x: 40, y: 80, note: "카페인 없는 따뜻한 위로 (허브차)", color: "#bc4749" },
+  { id: 1, name: "녹차 (Green Tea)", x: 15, y: 85, note: "맑고 깨끗한 향, 은은하고 산뜻한 단맛", color: "#8ab04b" },
+  { id: 2, name: "백차 (White Tea)", x: 30, y: 70, note: "솜털같이 가볍고 섬세한 달큰함", color: "#d2d8bc" },
+  { id: 3, name: "황차 (Yellow Tea)", x: 45, y: 60, note: "떫은맛을 덜어내어 더욱 부드러운 단맛", color: "#f7d08a" },
+  { id: 4, name: "청차 (Oolong Tea)", x: 65, y: 35, note: "화사한 과일과 꽃의 달콤한 향이 일품", color: "#6cad91" },
+  { id: 5, name: "홍차 (Black Tea)", x: 80, y: 25, note: "깊고 진한 풍미 속에 감춰진 꿀 같은 달콤함", color: "#c15c4d" },
+  { id: 6, name: "흑차 (Dark Tea/Puerh)", x: 50, y: 90, note: "묵직한 대지의 맛, 숙성된 깊은 단맛", color: "#4d3a2b" },
+  { id: 7, name: "카모마일", x: 60, y: 15, note: "사과처럼 향긋하고 달콤한 꽃향기", color: "#f9dc5c" },
+  { id: 8, name: "루이보스", x: 70, y: 80, note: "자극 없이 편안하게 스며드는 은은한 단맛", color: "#bc4749" },
 ];
 
 export default function FlavorMapPage() {
@@ -23,23 +23,23 @@ export default function FlavorMapPage() {
     <main className="tea-gradient-bg min-h-screen relative overflow-hidden p-6 md:p-12 flex flex-col" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative', overflow: 'hidden', padding: '1.5rem' }}>
       <div className="flex justify-between items-center mb-12" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
         <Link href="/">
-          <button className="flex items-center gap-2 text-text-secondary hover:text-accent-olive transition-colors" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-secondary)' }}>
+          <button className="flex items-center gap-2 transition-colors" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', border: 'none', cursor: 'pointer', color: '#fff', fontSize: '1rem', opacity: 0.8 }}>
             <ArrowLeft className="w-5 h-5" />
             <span className="serif">다실로 돌아가기</span>
           </button>
         </Link>
         <div className="text-right" style={{ textAlign: 'right' }}>
-          <h1 className="text-2xl font-bold serif" style={{ fontSize: '1.5rem', fontWeight: 700 }}>차(Tea) 향미 은하수</h1>
-          <p className="text-xs text-text-secondary opacity-60" style={{ fontSize: '0.75rem', opacity: 0.6 }}>Flavor Galaxy Map</p>
+          <h1 className="text-2xl font-bold serif" style={{ fontSize: '1.5rem', fontWeight: 700, color: '#fff' }}>차(Tea) 향미 은하수</h1>
+          <p className="text-xs opacity-60" style={{ fontSize: '0.75rem', opacity: 0.6, color: '#fff' }}>Flavor Galaxy Map</p>
         </div>
       </div>
 
-      <div className="flex-1 relative glass-card p-12 overflow-hidden flex items-center justify-center" style={{ flex: 1, position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '3rem' }}>
-        {/* Galaxy Axis Labels */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] tracking-widest opacity-40 uppercase" style={{ position: 'absolute', top: '1rem', left: '50%', transform: 'translateX(-50%)', fontSize: '10px', letterSpacing: '0.1em', opacity: 0.4, textTransform: 'uppercase' }}>화사함 (Floral/Fruit)</div>
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] tracking-widest opacity-40 uppercase" style={{ position: 'absolute', bottom: '1rem', left: '50%', transform: 'translateX(-50%)', fontSize: '10px', letterSpacing: '0.1em', opacity: 0.4, textTransform: 'uppercase' }}>차분함 (Earthy/Body)</div>
-        <div className="absolute left-4 top-1/2 -rotate-90 origin-center text-[10px] tracking-widest opacity-40 uppercase" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%) rotate(-90deg)', transformOrigin: 'center', fontSize: '10px', letterSpacing: '0.1em', opacity: 0.4, textTransform: 'uppercase' }}>산뜻함 (Light)</div>
-        <div className="absolute right-4 top-1/2 rotate-90 origin-center text-[10px] tracking-widest opacity-40 uppercase" style={{ position: 'absolute', right: '1rem', top: '50%', transform: 'translateY(-50%) rotate(90deg)', transformOrigin: 'center', fontSize: '10px', letterSpacing: '0.1em', opacity: 0.4, textTransform: 'uppercase' }}>깊은맛 (Heavy)</div>
+      <div className="flex-1 relative glass-card p-12 overflow-hidden flex items-center justify-center" style={{ flex: 1, position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '3rem', backgroundColor: 'rgba(255, 255, 255, 0.05)', borderRadius: '1.5rem', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+        {/* Galaxy Axis Labels - Updated to Sweetness/Aroma */}
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] tracking-widest opacity-80 uppercase" style={{ position: 'absolute', top: '1rem', left: '50%', transform: 'translateX(-50%)', fontSize: '10px', letterSpacing: '0.1em', opacity: 0.8, textTransform: 'uppercase', color: '#fff', zIndex: 10 }}>달콤한 향 (Sweet Aroma)</div>
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] tracking-widest opacity-80 uppercase" style={{ position: 'absolute', bottom: '1rem', left: '50%', transform: 'translateX(-50%)', fontSize: '10px', letterSpacing: '0.1em', opacity: 0.8, textTransform: 'uppercase', color: '#fff', zIndex: 10 }}>깔끔한 향 (Clean/Fresh)</div>
+        <div className="absolute left-4 top-1/2 -rotate-90 origin-center text-[10px] tracking-widest opacity-80 uppercase" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%) rotate(-90deg)', transformOrigin: 'center', fontSize: '10px', letterSpacing: '0.1em', opacity: 0.8, textTransform: 'uppercase', color: '#fff', zIndex: 10 }}>은은한 단맛 (Subtle Sweet)</div>
+        <div className="absolute right-4 top-1/2 rotate-90 origin-center text-[10px] tracking-widest opacity-80 uppercase" style={{ position: 'absolute', right: '1rem', top: '50%', transform: 'translateY(-50%) rotate(90deg)', transformOrigin: 'center', fontSize: '10px', letterSpacing: '0.1em', opacity: 0.8, textTransform: 'uppercase', color: '#fff', zIndex: 10 }}>진한 단맛 (Rich Sweet)</div>
 
         {/* Center Grid Lines */}
         <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.1, pointerEvents: 'none' }}>
