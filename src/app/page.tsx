@@ -23,9 +23,9 @@ export default function Home() {
           Digital Tea Room
         </motion.span>
         
-        <h1 className="text-4xl md:text-6xl font-bold serif tracking-tight" style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '3rem', letterSpacing: '-0.025em', lineHeight: '1.6' }}>
+        <h1 className="text-4xl md:text-6xl font-bold serif tracking-tight" style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '2rem', letterSpacing: '-0.025em', lineHeight: '1.3' }}>
           마음을 달이는 시간, <br />
-          <span className="text-accent-olive" style={{ color: 'var(--accent-olive)', display: 'inline-block', marginTop: '1.5rem' }}>다(茶)방전</span>
+          <span className="text-accent-olive" style={{ color: 'var(--accent-olive)', display: 'inline-block', marginTop: '0.4rem' }}>다(茶)방전</span>
         </h1>
         
         <p className="text-text-secondary text-lg mb-10 leading-relaxed font-light" style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', marginBottom: '3rem', lineHeight: 1.8, fontWeight: 300 }}>
