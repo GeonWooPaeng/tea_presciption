@@ -184,20 +184,27 @@ function PrescriptionContent() {
             </div>
           </div>
 
-          <div className="border-t border-zinc-300 pt-8 mt-4 text-center relative">
-            <div className="p-4 border border-zinc-200 rounded-lg mb-6 group hover:border-zinc-400 transition-colors" style={{ backgroundColor: '#fff' }}>
-              <span className="block text-[9px] uppercase tracking-[0.3em] mb-2 opacity-50">Master Validation Code</span>
-              <div className="w-full h-10 bg-repeat-x opacity-90" style={{ backgroundImage: 'linear-gradient(90deg, #000 2px, transparent 2px)', backgroundSize: '6px 100%' }} />
-              <span className="text-[9px] font-bold tracking-[0.5em] mt-2 block">TEA-RECIPE-7729-ALPHA</span>
+          <div className="border-t border-zinc-300 pt-8 mt-6 text-center relative">
+            <div className="p-4 border border-zinc-200 rounded-lg mb-8 group hover:border-zinc-400 transition-colors relative" style={{ backgroundColor: '#fff' }}>
+              <span className="absolute -top-2 left-4 bg-[#f9f8f4] px-2 text-[8px] uppercase tracking-widest opacity-40">Verification Code</span>
+              <div className="w-full h-8 bg-repeat-x opacity-80 mb-1" style={{ backgroundImage: 'linear-gradient(90deg, #1a1c18 1px, transparent 1px)', backgroundSize: '4px 100%' }} />
+              <span className="text-[10px] font-black tracking-[0.6em] block py-1 border-t border-zinc-100">TR-7729-2026-X</span>
             </div>
             
             <div className="flex justify-between items-center px-2">
-              <p className="text-[9px] opacity-40 leading-relaxed font-bold uppercase tracking-tighter text-left">Certified by Digital Tea Room Academy<br/>Mind-Calming Solution v1.2</p>
+              <div className="text-left">
+                <p className="text-[9px] opacity-40 leading-relaxed font-bold uppercase tracking-tighter mb-1">Mind-Calming Solution v1.2</p>
+                <p className="text-[8px] opacity-30 italic">Certified by Digital Tea Academy</p>
+              </div>
               
-              <div className="flex flex-col items-center">
-                <span className="text-[8px] uppercase opacity-40 mb-1">Issuer</span>
-                <div className="w-12 h-12 border-2 border-accent-olive rounded-full flex items-center justify-center rotate-12 bg-white/50" style={{ borderColor: 'var(--accent-olive)' }}>
-                  <span className="text-[10px] font-black text-accent-olive leading-tight" style={{ color: 'var(--accent-olive)' }}>팽주팽<br/>(印)</span>
+              <div className="flex flex-col items-center relative">
+                <div className="absolute -top-6 right-0 text-[7px] uppercase font-bold text-accent-olive opacity-80 tracking-widest">Authorized by</div>
+                <div className="w-14 h-14 border-[3px] border-[#c15c4d] rounded-full flex items-center justify-center -rotate-12 bg-white/40 shadow-sm" style={{ borderColor: '#c15c4d' }}>
+                  <div className="flex flex-col items-center">
+                    <span className="text-[11px] font-black text-[#c15c4d] leading-none mb-0.5">팽주팽</span>
+                    <div className="h-px w-8 bg-[#c15c4d] my-0.5" />
+                    <span className="text-[9px] font-bold text-[#c15c4d] leading-none">(印)</span>
+                  </div>
                 </div>
               </div>
             </div>
