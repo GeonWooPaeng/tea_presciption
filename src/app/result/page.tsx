@@ -3,7 +3,8 @@
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Download, RefreshCcw, Printer } from 'lucide-react';
+import { RefreshCcw, Printer } from 'lucide-react';
+import { Suspense } from 'react';
 
 // Mock Tea Data based on survey answers
 const TEA_RECOMMENDATIONS: Record<string, any> = {
@@ -39,7 +40,7 @@ const TEA_RECOMMENDATIONS: Record<string, any> = {
   }
 };
 
-export default function ResultPage() {
+function PrescriptionContent() {
   const searchParams = useSearchParams();
   const mood = searchParams.get('mood');
   const need = searchParams.get('need');
@@ -48,7 +49,7 @@ export default function ResultPage() {
   const tea = TEA_RECOMMENDATIONS[key] || TEA_RECOMMENDATIONS['default'];
 
   return (
-    <main className="tea-gradient-bg min-h-screen py-16 px-6 flex flex-col items-center">
+    <div className="w-full flex flex-col items-center">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -121,6 +122,16 @@ export default function ResultPage() {
           처방전 인쇄
         </button>
       </div>
+    </div>
+  );
+}
+
+export default function ResultPage() {
+  return (
+    <main className="tea-gradient-bg min-h-screen py-16 px-6 flex flex-col items-center">
+      <Suspense fallback={<div className="text-accent-olive serif">마음을 달이는 중...</div>}>
+        <PrescriptionContent />
+      </Suspense>
       
       <Link href="/map" className="mt-8 text-sm text-accent-olive underline underline-offset-4 opacity-70 hover:opacity-100">
         차 향미 은하수 탐험하기
