@@ -136,6 +136,43 @@ function PrescriptionContent() {
         </button>
       </div>
 
+      <div className="mt-12 w-full max-w-sm flex flex-col gap-4">
+        <Link href={`/map?tea=${encodeURIComponent(tea.name)}&mood=${mood}&need=${need}`} style={{ width: '100%' }}>
+          <button 
+            className="button-premium w-full" 
+            style={{ 
+              background: 'linear-gradient(135deg, var(--accent-olive), #7ea360)', 
+              color: 'var(--bg-primary)', 
+              padding: '16px', 
+              fontSize: '1rem',
+              fontWeight: 600,
+              boxShadow: '0 4px 20px rgba(152, 214, 151, 0.3)',
+              border: 'none',
+              width: '100%'
+            }}
+          >
+            <span className="flex items-center justify-center gap-2">
+              <span className="serif">'{tea.name}'</span> 향미 은하수 탐험하기
+            </span>
+          </button>
+        </Link>
+        
+        <Link href="/" style={{ width: '100%' }}>
+          <button 
+            className="button-premium w-full text-text-secondary" 
+            style={{ 
+              background: 'transparent',
+              border: '1px solid rgba(255,255,255,0.1)',
+              padding: '12px',
+              fontSize: '0.875rem',
+              width: '100%'
+            }}
+          >
+            처음으로 돌아가기
+          </button>
+        </Link>
+      </div>
+
       <style jsx>{`
         .flex { display: flex; }
         .flex-col { flex-direction: column; }
@@ -169,10 +206,6 @@ export default function ResultPage() {
       <Suspense fallback={<div className="text-accent-olive serif">마음을 달이는 중...</div>}>
         <PrescriptionContent />
       </Suspense>
-      
-      <Link href="/map" className="mt-8 text-sm text-accent-olive underline underline-offset-4 opacity-70 hover:opacity-100">
-        차 향미 은하수 탐험하기
-      </Link>
     </main>
   );
 }

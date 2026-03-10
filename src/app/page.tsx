@@ -23,12 +23,12 @@ export default function Home() {
           Digital Tea Room
         </motion.span>
         
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 serif tracking-tight" style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1.5rem', letterSpacing: '-0.025em' }}>
+        <h1 className="text-4xl md:text-6xl font-bold serif tracking-tight" style={{ fontSize: '3.5rem', fontWeight: 700, marginBottom: '3rem', letterSpacing: '-0.025em', lineHeight: '1.6' }}>
           마음을 달이는 시간, <br />
-          <span className="text-accent-olive" style={{ color: 'var(--accent-olive)' }}>다(茶)방전</span>
+          <span className="text-accent-olive" style={{ color: 'var(--accent-olive)', display: 'inline-block', marginTop: '1.5rem' }}>다(茶)방전</span>
         </h1>
         
-        <p className="text-text-secondary text-lg mb-10 leading-relaxed font-light" style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', marginBottom: '2.5rem', lineHeight: 1.625, fontWeight: 300 }}>
+        <p className="text-text-secondary text-lg mb-10 leading-relaxed font-light" style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', marginBottom: '3rem', lineHeight: 1.8, fontWeight: 300 }}>
           복잡한 생각은 잠시 내려놓고, <br />
           지금 당신에게 꼭 필요한 온기 한 잔을 찾아보세요.
         </p>
