@@ -162,9 +162,6 @@ function PrescriptionContent() {
     </div>
   );
 }
-    </div>
-  );
-}
 
 export default function ResultPage() {
   return (

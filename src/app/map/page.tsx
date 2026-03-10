@@ -20,31 +20,31 @@ export default function FlavorMapPage() {
   const [hoveredTea, setHoveredTea] = useState<any>(null);
 
   return (
-    <main className="tea-gradient-bg min-h-screen relative overflow-hidden p-6 md:p-12 flex flex-col">
-      <div className="flex justify-between items-center mb-12">
+    <main className="tea-gradient-bg min-h-screen relative overflow-hidden p-6 md:p-12 flex flex-col" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative', overflow: 'hidden', padding: '1.5rem' }}>
+      <div className="flex justify-between items-center mb-12" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
         <Link href="/">
-          <button className="flex items-center gap-2 text-text-secondary hover:text-accent-olive transition-colors">
+          <button className="flex items-center gap-2 text-text-secondary hover:text-accent-olive transition-colors" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-secondary)' }}>
             <ArrowLeft className="w-5 h-5" />
             <span className="serif">다실로 돌아가기</span>
           </button>
         </Link>
-        <div className="text-right">
-          <h1 className="text-2xl font-bold serif">차(Tea) 향미 은하수</h1>
-          <p className="text-xs text-text-secondary opacity-60">Flavor Galaxy Map</p>
+        <div className="text-right" style={{ textAlign: 'right' }}>
+          <h1 className="text-2xl font-bold serif" style={{ fontSize: '1.5rem', fontWeight: 700 }}>차(Tea) 향미 은하수</h1>
+          <p className="text-xs text-text-secondary opacity-60" style={{ fontSize: '0.75rem', opacity: 0.6 }}>Flavor Galaxy Map</p>
         </div>
       </div>
 
-      <div className="flex-1 relative glass-card p-12 overflow-hidden flex items-center justify-center">
+      <div className="flex-1 relative glass-card p-12 overflow-hidden flex items-center justify-center" style={{ flex: 1, position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '3rem' }}>
         {/* Galaxy Axis Labels */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] tracking-widest opacity-40 uppercase">화사함 (Floral/Fruit)</div>
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] tracking-widest opacity-40 uppercase">차분함 (Earthy/Body)</div>
-        <div className="absolute left-4 top-1/2 -rotate-90 origin-center text-[10px] tracking-widest opacity-40 uppercase">산뜻함 (Light)</div>
-        <div className="absolute right-4 top-1/2 rotate-90 origin-center text-[10px] tracking-widest opacity-40 uppercase">깊은맛 (Heavy)</div>
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] tracking-widest opacity-40 uppercase" style={{ position: 'absolute', top: '1rem', left: '50%', transform: 'translateX(-50%)', fontSize: '10px', letterSpacing: '0.1em', opacity: 0.4, textTransform: 'uppercase' }}>화사함 (Floral/Fruit)</div>
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] tracking-widest opacity-40 uppercase" style={{ position: 'absolute', bottom: '1rem', left: '50%', transform: 'translateX(-50%)', fontSize: '10px', letterSpacing: '0.1em', opacity: 0.4, textTransform: 'uppercase' }}>차분함 (Earthy/Body)</div>
+        <div className="absolute left-4 top-1/2 -rotate-90 origin-center text-[10px] tracking-widest opacity-40 uppercase" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%) rotate(-90deg)', transformOrigin: 'center', fontSize: '10px', letterSpacing: '0.1em', opacity: 0.4, textTransform: 'uppercase' }}>산뜻함 (Light)</div>
+        <div className="absolute right-4 top-1/2 rotate-90 origin-center text-[10px] tracking-widest opacity-40 uppercase" style={{ position: 'absolute', right: '1rem', top: '50%', transform: 'translateY(-50%) rotate(90deg)', transformOrigin: 'center', fontSize: '10px', letterSpacing: '0.1em', opacity: 0.4, textTransform: 'uppercase' }}>깊은맛 (Heavy)</div>
 
         {/* Center Grid Lines */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
-          <div className="w-full h-px bg-white" />
-          <div className="h-full w-px bg-white absolute" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.1, pointerEvents: 'none' }}>
+          <div className="w-full h-px bg-white" style={{ width: '100%', height: '1px', backgroundColor: '#fff' }} />
+          <div className="h-full w-px bg-white absolute" style={{ height: '100%', width: '1px', backgroundColor: '#fff', position: 'absolute' }} />
         </div>
 
         {/* Tea Stars */}

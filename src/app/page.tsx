@@ -5,38 +5,41 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="tea-gradient-bg flex flex-col items-center justify-center min-h-screen px-6 text-center">
+    <main className="tea-gradient-bg flex flex-col items-center justify-center min-h-screen px-6 text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', textAlign: 'center' }}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
         className="max-w-2xl"
+        style={{ maxWidth: '42rem' }}
       >
         <motion.span 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
           className="text-accent-olive tracking-widest uppercase text-sm mb-4 block"
+          style={{ color: 'var(--accent-olive)', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.875rem', marginBottom: '1rem', display: 'block' }}
         >
           Digital Tea Room
         </motion.span>
         
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 serif tracking-tight">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 serif tracking-tight" style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '1.5rem', letterSpacing: '-0.025em' }}>
           마음을 달이는 시간, <br />
-          <span className="text-accent-olive">다(茶)방전</span>
+          <span className="text-accent-olive" style={{ color: 'var(--accent-olive)' }}>다(茶)방전</span>
         </h1>
         
-        <p className="text-text-secondary text-lg mb-10 leading-relaxed font-light">
+        <p className="text-text-secondary text-lg mb-10 leading-relaxed font-light" style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', marginBottom: '2.5rem', lineHeight: 1.625, fontWeight: 300 }}>
           복잡한 생각은 잠시 내려놓고, <br />
           지금 당신에게 꼭 필요한 온기 한 잔을 찾아보세요.
         </p>
 
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
           <Link href="/survey">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="button-premium px-12 py-4"
+              style={{ padding: '1rem 3rem' }}
             >
               다실 입장하기
             </motion.button>
@@ -47,6 +50,7 @@ export default function Home() {
             animate={{ opacity: 0.6 }}
             transition={{ delay: 1.5, duration: 1 }}
             className="text-xs text-text-secondary mt-4 font-light italic"
+            style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '1rem', opacity: 0.6, fontWeight: 300, fontStyle: 'italic' }}
           >
             차(tea) 마스터가 당신의 마음 날씨를 기다리고 있습니다.
           </motion.div>
