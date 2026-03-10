@@ -24,9 +24,12 @@ function MapContent() {
   const mood = searchParams.get('mood');
   const need = searchParams.get('need');
 
-  // Filter to only show the prescribed tea if provided
+  // Filter to only show the prescribed tea if provided (robust matching)
   const displayTeas = prescribedTeaName 
-    ? TEA_MAP_DATA.filter(t => t.name === prescribedTeaName)
+    ? TEA_MAP_DATA.filter(t => 
+        t.name.toLowerCase().includes(prescribedTeaName.toLowerCase()) || 
+        prescribedTeaName.toLowerCase().includes(t.name.split(' (')[0].toLowerCase())
+      )
     : TEA_MAP_DATA;
 
   return (
