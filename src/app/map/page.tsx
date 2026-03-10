@@ -7,14 +7,14 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
 const TEA_MAP_DATA = [
-  { id: 1, name: "녹차 (Green Tea)", x: 20, y: 75, note: "맑고 깨끗한 향, 은은하고 산뜻한 단맛", color: "#8ab04b" }, // 덜 단향 쪽
-  { id: 2, name: "백차 (White Tea)", x: 35, y: 55, note: "솜털같이 가볍고 섬세한 달큰함", color: "#d2d8bc" },
-  { id: 3, name: "황차 (Yellow Tea)", x: 45, y: 50, note: "떫은맛을 덜어내어 더욱 부드러운 단맛", color: "#f7d08a" },
-  { id: 4, name: "청차 (Oolong Tea)", x: 75, y: 15, note: "화사한 과일과 꽃의 달콤한 향이 일품", color: "#6cad91" }, // 강한 단향
-  { id: 5, name: "홍차 (Black Tea)", x: 90, y: 20, note: "깊고 진한 풍미 속에 감춰진 꿀 같은 달콤함", color: "#c15c4d" }, // 강한 단향
-  { id: 6, name: "흑차 (Puerh Tea)", x: 35, y: 85, note: "묵직한 대지의 맛, 숙성된 깊은 단맛", color: "#4d3a2b" }, // 덜 단향 (중후)
-  { id: 7, name: "카모마일 (Chamomile)", x: 80, y: 10, note: "사과처럼 향긋하고 달콤한 꽃향기", color: "#f9dc5c" }, // 매우 강한 단향
-  { id: 8, name: "루이보스 (Rooibos)", x: 65, y: 65, note: "자극 없이 편안하게 스며드는 은은한 단맛", color: "#bc4749" },
+  { id: 1, name: "녹차 (Green Tea)", x: 20, y: 85, note: "맑고 깨끗한 향, 은은하고 산뜻한 단맛", color: "#8ab04b" }, // 덜 단향 (최하단)
+  { id: 2, name: "백차 (White Tea)", x: 35, y: 60, note: "솜털같이 가볍고 섬세한 달큰함", color: "#d2d8bc" },
+  { id: 3, name: "황차 (Yellow Tea)", x: 45, y: 55, note: "떫은맛을 덜어내어 더욱 부드러운 단맛", color: "#f7d08a" },
+  { id: 4, name: "청차 (Oolong Tea)", x: 75, y: 10, note: "화사한 과일과 꽃의 달콤한 향이 일품", color: "#6cad91" }, // 강한 단향 (최상단)
+  { id: 5, name: "홍차 (Black Tea)", x: 90, y: 20, note: "깊고 진한 풍미 속에 감춰진 꿀 같은 달콤함", color: "#c15c4d" }, // 강한 단향 (상단)
+  { id: 6, name: "흑차 (Puerh Tea)", x: 30, y: 90, note: "묵직한 대지의 맛, 숙성된 깊은 단맛", color: "#4d3a2b" }, // 덜 단향 (최하단)
+  { id: 7, name: "카모마일 (Chamomile)", x: 80, y: 5, note: "사과처럼 향긋하고 달콤한 꽃향기", color: "#f9dc5c" }, // 매우 강한 단향 (최상단)
+  { id: 8, name: "루이보스 (Rooibos)", x: 65, y: 70, note: "자극 없이 편안하게 스며드는 은은한 단맛", color: "#bc4749" },
 ];
 
 function MapContent() {
@@ -68,8 +68,8 @@ function MapContent() {
           <div className="h-[85%] w-px bg-white/20 absolute" style={{ height: '85%', width: '1px', backgroundColor: 'rgba(255,255,255,0.2)', position: 'absolute' }} />
         </div>
 
-        {/* Tea Stars Container - Must be the reference for % coordinates */}
-        <div className="relative w-full h-full max-w-5xl aspect-square md:aspect-[16/9]" style={{ width: '100%', height: '100%', position: 'relative', zIndex: 10 }}>
+        {/* Tea Stars Container - Explicit Coordinate Space */}
+        <div className="relative w-full h-full max-w-5xl aspect-square md:aspect-video" style={{ width: '100%', height: '100%', position: 'relative', zIndex: 10 }}>
           {displayTeas.map((tea) => (
             <motion.div
               key={tea.id}
@@ -80,7 +80,8 @@ function MapContent() {
                 left: `${tea.x}%`, 
                 top: `${tea.y}%`,
                 position: 'absolute',
-                transform: 'translate(-50%, -50%)'
+                x: '-50%',
+                y: '-50%'
               }}
               onHoverStart={() => setHoveredTea(tea)}
               onHoverEnd={() => setHoveredTea(null)}
@@ -89,20 +90,20 @@ function MapContent() {
               <motion.div
                 animate={{ 
                   boxShadow: hoveredTea?.id === tea.id 
-                    ? `0 0 30px 10px ${tea.color}` 
-                    : `0 0 20px 5px ${tea.color}60`,
-                  scale: hoveredTea?.id === tea.id ? 2 : 1.5
+                    ? `0 0 40px 15px ${tea.color}` 
+                    : `0 0 25px 8px ${tea.color}60`,
+                  scale: hoveredTea?.id === tea.id ? 2.5 : 1.8
                 }}
-                className="w-5 h-5 rounded-full"
+                className="w-4 h-4 rounded-full"
                 style={{ backgroundColor: tea.color }}
               />
-              <span className="absolute top-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-bold transition-opacity" style={{ color: tea.color, textShadow: '0 0 10px rgba(0,0,0,0.8)' }}>
+              <span className="absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-[13px] font-black transition-opacity" style={{ color: tea.color, textShadow: '0 0 15px rgba(0,0,0,1)' }}>
                 {tea.name}
               </span>
 
               {/* Ink Spread Effect on Hover */}
               {hoveredTea?.id === tea.id && (
-                <div className="ink-drop" style={{ left: '50%', top: '50%', backgroundColor: tea.color }} />
+                <div className="ink-drop" style={{ left: '50%', top: '50%', backgroundColor: tea.color, opacity: 0.4 }} />
               )}
             </motion.div>
           ))}
